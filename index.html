@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orangr - Contact - Back Office For Tier 3 FIs</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+* { font-family: Verdana, Georgia !important; }
+h1,h2,h3,button,b,strong { font-family: Verdana !important; }
+p,li,span,input,select,textarea,label,small,div { font-family: Georgia !important; }
+::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-thumb { background:#2E2E2E; border-radius:4px; }
+</style>
+</head>
+<body style="background:#0F0F0F; color:#F5F1E8; min-height:100vh;">
+<div style="height:8px; background:#FF5A1F; width:100%;"></div>
+
+<div class="max-w-6xl mx-auto px-6 py-10">
+  <div class="flex flex-col lg:flex-row gap-8">
+    <!-- Left: Info + Bridging Context -->
+    <div class="lg:w-[48%]">
+      <div class="text-[11px] tracking-[0.2em] text-[#D97757] uppercase">FOR TIER 3 FIS 20-150 STAFF SINGAPORE ONLY</div>
+      <h1 class="mt-3 text-[32px] lg:text-[42px] font-bold leading-[0.95] tracking-[-0.02em] text-[#F5F1E8]">
+        MAS Audit Pack in 24h.
+        <span class="block text-[#FF5A1F]">Even When Staff Resigns.</span>
+      </h1>
+      <p class="mt-4 text-[15px] text-[#E8DCC6] leading-relaxed">Same MAS requirements as Tier 1. 1/10th back office. One MSA, 8 Functions, You Own Data.</p>
+      
+      <div class="mt-6 grid grid-cols-1 gap-3">
+        <div class="rounded-xl border border-[#2E2E2E] bg-[#1E1E1E] p-4">
+          <div class="text-[11px] text-[#FF5A1F] font-bold tracking-wide">FROM URL BRIDGE</div>
+          <div id="bridge-info" class="mt-2 text-[13px] text-[#F5F1E8] leading-6">Reading pack...</div>
+          <div class="mt-3 flex gap-2">
+            <div class="h-2 rounded-full bg-[#E8DCC6] w-[60px]"></div>
+            <div class="h-2 rounded-full bg-[#2E2E2E] w-full"></div>
+          </div>
+          <div class="mt-2 text-[11px] text-[#9CA3AF]">Longer cream = more effort. Fixed format ?src=...&pack=...#3</div>
+        </div>
+        <div class="rounded-xl border border-[#2E2E2E] bg-[#1E1E1E] p-4">
+          <div class="text-[11px] text-[#FF5A1F] font-bold">WHAT YOU GET</div>
+          <ul class="mt-2 text-[13px] text-[#E8DCC6] space-y-1 list-disc ml-4">
+            <li>One MSA — 8 Functions — Not 8 Vendors</li>
+            <li>Audit Pack 24h for MAS Auditors</li>
+            <li>Inventory Assurance — Continuity — What MAS Asks</li>
+            <li>You Own License + Data — No Lock-in — We Implement + Support</li>
+          </ul>
+        </div>
+        <div class="rounded-xl border border-[#2E2E2E] bg-[#121212] p-4">
+          <div class="text-[11px] text-[#9CA3AF]">VS HIRING / MARKET</div>
+          <div class="mt-1 flex gap-3 text-[12px]">
+            <div><span class="text-[#F5F1E8] font-bold">Market consultant higher</span><br><span class="text-[#FF5A1F]">$8k-12k</span><div class="mt-1 h-2 w-24 bg-[#2E2E2E] rounded-full"><div class="h-2 w-10 bg-[#3A3D40] rounded-full"></div></div><span class="text-[10px] text-[#9CA3AF]">Longer gray = higher market cost</span></div>
+            <div><span class="text-[#F5F1E8] font-bold">Hiring 3 staff higher</span><br><span class="text-[#FF5A1F]">$20k+/mo</span><div class="mt-1 h-2 w-24 bg-[#2E2E2E] rounded-full"><div class="h-2 w-16 bg-[#3A3D40] rounded-full"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Contact Form that replaces #3 -->
+    <div class="lg:w-[52%]" id="contact">
+      <div id="contact" class="rounded-2xl border border-[#2E2E2E] bg-[#1E1E1E] p-6 lg:p-7 shadow-2xl sticky top-6">
+        <h2 class="text-[18px] font-bold text-[#FF5A1F]">Contact Us — Secure Pack</h2>
+        <p class="mt-1 text-[12px] text-[#9CA3AF]">Replaces https://orangrone.mystrikingly.com/#3 — You control bridging. Host on GitHub Pages.</p>
+
+        <form id="contactForm" class="mt-5 space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div><label class="text-[11px] text-[#E8DCC6]">Email*</label><input required id="email" type="email" class="mt-1 w-full rounded-lg border border-[#2E2E2E] bg-[#121212] px-3 py-2.5 text-[13px] text-[#F5F1E8] outline-none focus:border-[#FF5A1F]" placeholder="cfo@company.com"></div>
+            <div><label class="text-[11px] text-[#E8DCC6]">Company*</label><input required id="company" type="text" class="mt-1 w-full rounded-lg border border-[#2E2E2E] bg-[#121212] px-3 py-2.5 text-[13px] text-[#F5F1E8] outline-none focus:border-[#FF5A1F]" placeholder="ABC Capital Pte Ltd"></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div><label class="text-[11px] text-[#E8DCC6]">Role</label><select id="role" class="mt-1 w-full rounded-lg border border-[#2E2E2E] bg-[#121212] px-3 py-2.5 text-[13px] text-[#F5F1E8]"><option>COO</option><option>CFO</option><option>CRO</option><option>Head Compliance</option><option>Other</option></select></div>
+            <div><label class="text-[11px] text-[#E8DCC6]">FI Type</label><select id="fiType" class="mt-1 w-full rounded-lg border border-[#2E2E2E] bg-[#121212] px-3 py-2.5 text-[13px] text-[#F5F1E8]"><option>CMS Licensee</option><option>Merchant Bank</option><option>Finance Company</option><option>Insurer</option><option>Payment Institution</option><option>Other</option></select></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div><label class="text-[11px] text-[#E8DCC6]">Staff Size</label><select id="staff" class="mt-1 w-full rounded-lg border border-[#2E2E2E] bg-[#121212] px-3 py-2.5 text-[13px] text-[#F5F1E8]"><option>20-50</option><option>51-100</option><option>101-150</option><option><20</option><option>>150</option></select></div>
+            <div><label class="text-[11px] text-[#E8DCC6]">MAS Audit Month</label><select id="auditMonth" class="mt-1 w-full rounded-lg border border-[#2E2E2E] bg-[#121212] px-3 py-2.5 text-[13px] text-[#F5F1E8]"><option>Next 3 months</option><option>3-6 months</option><option>6-12 months</option><option>>12 months</option></select></div>
+          </div>
+          <div>
+            <label class="text-[11px] text-[#E8DCC6]">Pack Interested In</label>
+            <select id="pack" class="mt-1 w-full rounded-lg border border-[#FF5A1F] bg-[#121212] px-3 py-2.5 text-[13px] text-[#FF5A1F] font-bold">
+              <option value="L0-checklist-free">L0 Free Checklist — Free Gaps</option>
+              <option value="L1-scorecard-free">L1 Free Scorecard 24Q — Free Instant Score</option>
+              <option value="L2-benchmark-199">L2 $199 Benchmark — Small effort</option>
+              <option value="L3-snapshot-5d">L3 Snapshot $3,500 — 5 man-days — See our controls</option>
+              <option value="L4-assessment-35d">L4 Assessment $25k — 35 man-days — Full picture</option>
+              <option value="L5-monthly-18d-popular" selected>L5 Monthly $12k Most Popular — 18 man-days/mo — MAS compliant</option>
+              <option value="L6-annual-180d">L6 Annual $120k Save $24k — 180 man-days/yr — Enterprise</option>
+              <option value="L7-coventure-outcome">L7 Co-Venture — Outcome-based — Discuss</option>
+              <option value="score-red">Score Red — Need Snapshot</option>
+              <option value="score-amber">Score Amber — Need Assessment</option>
+              <option value="score-green">Score Green — Enterprise</option>
+            </select>
+            <div class="mt-1 text-[10px] text-[#9CA3AF]">Auto-filled from URL ?src=...&pack=...#3 — You own this bridging now.</div>
+          </div>
+          <div>
+            <label class="text-[11px] text-[#E8DCC6]">Message</label>
+            <textarea id="message" rows="3" class="mt-1 w-full rounded-lg border border-[#2E2E2E] bg-[#121212] px-3 py-2.5 text-[13px] text-[#F5F1E8] outline-none focus:border-[#FF5A1F]" placeholder="Audit pack in 24h even when staff resigns? Need sample deck & sample audit pack..."></textarea>
+          </div>
+          <div class="flex gap-2 items-start">
+            <input type="checkbox" id="pdpa" required class="mt-1">
+            <label for="pdpa" class="text-[11px] text-[#9CA3AF]">I agree to receive MAS Back Office Scorecard and audit pack checklist. PDPA compliant.</label>
+          </div>
+
+          <button type="submit" class="w-full rounded-xl bg-[#FF5A1F] hover:bg-[#FF6B2E] text-black font-bold py-3 text-[14px]">Join Waitlist + Secure Pack — Instant Scorecard</button>
+
+          <div id="successBox" class="hidden rounded-xl bg-[#F5F1E8] text-black p-4 text-[13px] leading-relaxed">
+            <div class="font-bold">✓ You're on list. Saved locally + ready to forward.</div>
+            <div class="mt-1 text-[11px]">This static GitHub page saves to localStorage. Connect to Formspree / Google Sheets / Email via JS below for production.</div>
+            <div class="mt-3 grid grid-cols-2 gap-2">
+              <button type="button" id="openMainSite" class="rounded-lg bg-black text-[#F5F1E8] py-2 text-[12px] font-bold">Open Main Site Pack →</button>
+              <button type="button" id="copyLead" class="rounded-lg border border-black py-2 text-[12px] font-bold">Copy Lead JSON</button>
+            </div>
+            <div class="mt-3 text-[11px] text-[#8B7355]">Next: Forward to https://orangrone.mystrikingly.com/?src=...&pack=...#3 with correct format</div>
+          </div>
+
+          <div class="mt-3 rounded-lg bg-[#121212] border border-[#2E2E2E] p-3">
+            <div class="text-[10px] text-[#9CA3AF] uppercase tracking-wide">Bridge URL Preview (fixed format)</div>
+            <div id="bridgeUrlPreview" class="mt-1 text-[11px] text-[#FF5A1F] break-all">https://orangrone.mystrikingly.com/?src=orangr-github&pack=L5-monthly-18d-popular#3</div>
+          </div>
+        </form>
+
+        <div class="mt-4 text-[10px] text-[#9CA3AF]">Host on GitHub: repo → Settings → Pages → main / root → file = index.html — Fonts only Verdana + Georgia — No ladder term — Prospect sees only Pack Price + Effort + Outcome + vs Hiring/Market</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-8 text-center text-[11px] text-[#3A3D40]">Orangr — Back Office For Tier 3 FIs — MAS Compliant — Software Implementation Support Partner — No Software Ownership — Singapore — Fixed Pack Prices</div>
+</div>
+
+<!-- Toast bottom-right 24px white bg -->
+<div id="orangr-toast" style="position:fixed; bottom:24px; right:24px; z-index:9999; display:none; background:#F5F1E8; color:#000; padding:12px 18px; border-radius:12px; font-size:13px; font-weight:600; box-shadow:0 10px 30px rgba(0,0,0,0.5); border:1px solid #E8DCC6; max-width:340px;"></div>
+
+<script>
+function getParams() {
+  const search = window.location.search; // ?src=...&pack=... correctly before #
+  const params = new URLSearchParams(search);
+  return { src: params.get('src') || 'orangr-github', pack: params.get('pack') || 'L5-monthly-18d-popular', hash: window.location.hash || '#3' };
+}
+function updateBridgeInfo() {
+  const { src, pack, hash } = getParams();
+  const info = document.getElementById('bridge-info');
+  if(info){
+    info.innerHTML = '<b>src:</b> ' + src + '<br><b>pack:</b> ' + pack + '<br><b>hash:</b> ' + hash + '<br><b>fixed URL:</b> ?src=' + src + '&pack=' + pack + '#3 works — #3?src=... broken';
+  }
+  const packSelect = document.getElementById('pack');
+  if(packSelect){
+    for(let opt of packSelect.options){ if(opt.value===pack){ packSelect.value=pack; break; } }
+  }
+  const preview = document.getElementById('bridgeUrlPreview');
+  if(preview){
+    preview.textContent = 'https://orangrone.mystrikingly.com/?src=' + src + '&pack=' + pack + '#3';
+  }
+}
+function showToast(msg){
+  const t = document.getElementById('orangr-toast');
+  t.textContent = msg;
+  t.style.display='block';
+  setTimeout(()=>{ t.style.display='none'; }, 4000);
+}
+document.addEventListener('DOMContentLoaded', ()=>{
+  updateBridgeInfo();
+  window.addEventListener('hashchange', updateBridgeInfo);
+  const form = document.getElementById('contactForm');
+  const successBox = document.getElementById('successBox');
+  form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const data = {
+      email: document.getElementById('email').value,
+      company: document.getElementById('company').value,
+      role: document.getElementById('role').value,
+      fiType: document.getElementById('fiType').value,
+      staff: document.getElementById('staff').value,
+      auditMonth: document.getElementById('auditMonth').value,
+      pack: document.getElementById('pack').value,
+      message: document.getElementById('message').value,
+      src: getParams().src,
+      timestamp: new Date().toISOString()
+    };
+    // GitHub Pages static - save to localStorage demo, replace with Formspree / Sheets API for prod
+    const existing = JSON.parse(localStorage.getItem('orangr_contacts_github')||'[]');
+    existing.push(data);
+    localStorage.setItem('orangr_contacts_github', JSON.stringify(existing));
+    successBox.classList.remove('hidden');
+    showToast('✓ Saved — You\'re on list. Pack: ' + data.pack);
+    // Confetti simple
+    for(let i=0;i<12;i++){
+      const d=document.createElement('div');
+      d.style.position='fixed'; d.style.left=(50+Math.random()*40)+'vw'; d.style.top='-10px';
+      d.style.width='8px'; d.style.height='8px'; d.style.background=['#FF5A1F','#F5F1E8','#E8DCC6'][Math.floor(Math.random()*3)];
+      d.style.borderRadius='50%'; d.style.zIndex='10000'; d.style.transition='transform 1s ease-out, top 1s ease-out';
+      document.body.appendChild(d);
+      setTimeout(()=>{ d.style.top='110vh'; d.style.transform='rotate(720deg)'; }, 50);
+      setTimeout(()=>{ d.remove(); }, 1200);
+    }
+  });
+  document.getElementById('openMainSite').addEventListener('click', ()=>{
+    const { src, pack } = getParams();
+    const url = 'https://orangrone.mystrikingly.com/?src=' + encodeURIComponent(src) + '&pack=' + encodeURIComponent(pack) + '#3';
+    window.open(url, '_blank');
+  });
+  document.getElementById('copyLead').addEventListener('click', ()=>{
+    const last = JSON.parse(localStorage.getItem('orangr_contacts_github')||'[]').slice(-1)[0];
+    if(last){ navigator.clipboard.writeText(JSON.stringify(last,null,2)).then(()=>showToast('Lead JSON copied')); }
+  });
+});
+// Ensure no ladder term in source - validation
+if(document.documentElement.innerHTML.toLowerCase().includes('value ladder') || document.documentElement.innerHTML.toLowerCase().includes('ascending value')){
+  console.error('Ladder term found - must remove');
+}
+</script>
+</body>
+</html>
