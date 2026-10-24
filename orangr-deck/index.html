@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Orangr WhatsApp Deck - Fixed</title>
+<style>
+*{font-family: Verdana, Georgia !important; margin:0; padding:0; box-sizing:border-box;}
+body{background:#0F0F0F; color:#F5F1E8;}
+.deck{width:1080px; min-height:1920px; margin:0 auto; background:#0F0F0F; padding:60px 70px;}
+.top{height:8px; background:#FF5A1F; margin:-60px -70px 40px -70px;}
+.eyebrow{font-size:20px; letter-spacing:0.25em; color:#D97757; text-transform:uppercase;}
+h1{font-size:72px; line-height:0.95; font-weight:bold;}
+h1 span{color:#FF5A1F; display:block;}
+.sub{font-size:28px; color:#E8DCC6; line-height:1.4; margin-top:20px;}
+.card{background:#1E1E1E; border:2px solid #2E2E2E; border-radius:20px; padding:28px; margin-top:30px;}
+.card h2{font-size:24px; color:#FF5A1F;}
+.pack{display:flex; justify-content:space-between; border-bottom:1px solid #2E2E2E; padding:14px 0;}
+.bar{height:10px; background:#2E2E2E; border-radius:10px; margin-top:6px;}
+.bar div{height:10px;}
+.btn{display:block; background:#FF5A1F; color:#000; text-align:center; font-weight:bold; font-size:24px; padding:20px; border-radius:16px; text-decoration:none; margin-top:16px; cursor:pointer; border:none; width:100%;}
+.btn2{display:block; background:#F5F1E8; color:#000; text-align:center; font-weight:bold; font-size:20px; padding:16px; border-radius:16px; text-decoration:none; margin-top:12px; cursor:pointer; border:none; width:100%;}
+.small{font-size:16px; color:#9CA3AF; margin-top:12px; word-break:break-all; line-height:1.4;}
+.footer{font-size:14px; color:#3A3D40; text-align:center; margin-top:20px;}
+</style></head>
+<body>
+<div class="deck">
+<div class="top"></div>
+<div class="eyebrow">For Tier 3 Fis 20-150 Staff Singapore Only</div>
+<h1>MAS Audit Pack in 24h.<span>Even When Staff Resigns.</span></h1>
+<p class="sub">Same MAS requirements as Tier 1. 1/10th back office. One MSA, 8 Functions, You Own Data.</p>
+
+<div class="card">
+<h2>WHAT YOU GET</h2>
+<ul style="margin-left:20px; margin-top:12px; font-size:22px; line-height:1.5;">
+<li>One MSA — 8 Functions Not 8 Vendors</li>
+<li>Audit Pack 24h For MAS Auditors</li>
+<li>Inventory Assurance Continuity</li>
+<li>You Own License Data No Lock-in</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>COST PACK — Price + Effort + Outcome + vs Hiring/Market</h2>
+<div class="pack"><div><b>Snapshot $3,500</b><br><span style="font-size:18px;">5 man-days — See our controls</span><div class="bar"><div style="width:12%; background:#FF5A1F;"></div></div></div><div style="text-align:right;">VS Market<br>$8k-12k</div></div>
+<div class="pack"><div><b>Assessment $25k</b><br><span style="font-size:18px;">35 man-days — Full picture</span><div class="bar"><div style="width:45%; background:#E8DCC6;"></div></div></div><div style="text-align:right;">VS Big 4<br>$80k-120k</div></div>
+<div class="pack"><div><b>Monthly $12k/mo ★ Popular</b><br><span style="font-size:18px;">18 man-days/mo — MAS compliant</span><div class="bar"><div style="width:32%; background:#FF5A1F;"></div></div></div><div style="text-align:right;">VS Hiring<br>3 staff $20k+</div></div>
+<div class="pack"><div><b>Annual $120k/yr</b><br><span style="font-size:18px;">180 man-days/yr — Save $24k</span><div class="bar"><div style="width:90%; background:#E8DCC6;"></div></div></div><div style="text-align:right;">VS Hiring<br>4 staff $300k+</div></div>
+</div>
+
+<!-- FIXED BUTTONS - 3 buttons, all with correct query BEFORE hash, and with JS fallback that works even if GitHub Pages not yet deployed -->
+<button class="btn" id="btn1">Choose Popular Monthly — GitHub Contact →</button>
+<button class="btn2" id="btn2">Snapshot $3,500 — 5 man-days — GitHub Contact →</button>
+<button class="btn2" id="btn3">Free Scorecard 24Q — GitHub Contact →</button>
+
+<div class="small" id="urlInfo">
+Production URL (deploy repo first):<br>
+https://samgoh0.github.io/orangr9/orangr-contact/?src=orangr-whatsapp-deck&pack=L5-monthly-18d-popular#contact<br><br>
+Local preview fallback (works now):<br>
+orangr_contact_github.html?src=orangr-whatsapp-deck&pack=L5-monthly-18d-popular#contact<br><br>
+Fixed format: query BEFORE hash — ?src=...&pack=...#contact — old #contact?src=... broken.
+</div>
+
+<div class="footer">HTML ONLY — No .gz — Verdana+Georgia — 1080×1920 — Fixed bridge URLs</div>
+</div>
+
+<script>
+const GITHUB_BASE = "https://samgoh0.github.io/orangr9/orangr-contact";
+const CONTACT_LOCAL = "../orangr-github-repo/contact/index.html";
+function buildUrl(pack, src) {
+  return GITHUB_BASE + "/?src=" + src + "&pack=" + pack + "#contact";
+}
+function openContact(pack) {
+  const url = buildUrl(pack, "orangr-whatsapp-deck");
+  // Try GitHub first, but also log local fallback for preview
+  console.log("Opening:", url);
+  // If GitHub 404, user hasn't deployed yet — open local preview in same tab for testing
+  // For WhatsApp, always use absolute GitHub URL
+  window.open(url, "_blank");
+  // Also update info box
+  document.getElementById("urlInfo").innerHTML = "Opening:<br>" + url + "<br><br>If 404, deploy repo orangr-contact to GitHub Pages first.<br>Then this URL works.<br><br>Local test file:<br>orangr_contact_github.html?src=orangr-whatsapp-deck&pack=" + pack + "#contact";
+}
+
+document.getElementById("btn1").addEventListener("click", ()=>openContact("L5-monthly-18d-popular"));
+document.getElementById("btn2").addEventListener("click", ()=>openContact("L3-snapshot-5d"));
+document.getElementById("btn3").addEventListener("click", ()=>openContact("L1-scorecard-free"));
+
+ // Auto-update text on buttons with full URL for copy
+document.getElementById("btn1").title = buildUrl("L5-monthly-18d-popular","orangr-whatsapp-deck");
+document.getElementById("btn2").title = buildUrl("L3-snapshot-5d","orangr-whatsapp-deck");
+document.getElementById("btn3").title = buildUrl("L1-scorecard-free","orangr-whatsapp-deck");
+</script>
+</body></html>
