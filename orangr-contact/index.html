@@ -35,7 +35,7 @@ input[type="range"]::-moz-range-thumb { height:20px; width:20px; border-radius:5
     <div class="lg:w-[52%]" id="contact">
       <div class="rounded-2xl border border-[#2E2E2E] bg-[#1E1E1E] p-6 lg:p-7 shadow-2xl sticky top-6">
         <h2 class="text-[18px] font-bold text-[#FF5A1F]">Contact Us</h2>
-        <p class="mt-1 text-[12px] text-[#9CA3AF]">Host on GitHub Pages — Fixed font Verdana only.</p>
+        <p class="mt-1 text-[12px] text-[#9CA3AF]">Host on GitHub Pages — Verdana only</p>
         <form id="contactForm" class="mt-5 space-y-4">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div><label class="text-[11px] text-[#E8DCC6]">Email*</label><input required id="email" type="email" class="mt-1 w-full rounded-lg border border-[#2E2E2E] bg-[#121212] px-3 py-2.5 text-[13px] text-[#F5F1E8] outline-none focus:border-[#FF5A1F]" placeholder="cfo@company.com"></div>
@@ -92,6 +92,7 @@ input[type="range"]::-moz-range-thumb { height:20px; width:20px; border-radius:5
             <label for="pdpa" class="text-[11px] text-[#9CA3AF]">I agree to receive MAS Back Office Scorecard and audit pack checklist. PDPA compliant.</label>
           </div>
           <button type="submit" class="w-full rounded-xl bg-[#FF5A1F] hover:bg-[#FF6B2E] text-black font-bold py-3 text-[14px]">Instant Scorecard</button>
+          <iframe id="hiddenIframe" name="hiddenIframe" style="display:none;"></iframe>
         </form>
       </div>
     </div>
@@ -100,9 +101,13 @@ input[type="range"]::-moz-range-thumb { height:20px; width:20px; border-radius:5
 </div>
 <div id="orangr-toast" style="position:fixed; bottom:24px; right:24px; z-index:9999; display:none; background:#F5F1E8; color:#000; padding:12px 18px; border-radius:12px; font-size:13px; font-weight:600; box-shadow:0 10px 30px rgba(0,0,0,0.5); border:1px solid #E8DCC6; max-width:340px;"></div>
 <script>
-const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzLvh68RKJtg3-F_YHtIUkl559kWXHUbWh5Mg6SoRahUXI2XBCMiBYE2Cu3PziVPOjZqw/exec'; // <-- REPLACE THIS WITH YOUR WEB APP URL
+// ===== PASTE YOUR GOOGLE SHEET WEB APP URL HERE =====
+// How to get URL: Google Sheet -> Extensions -> Apps Script -> Paste Code-MINIMAL.gs -> Deploy -> New deployment -> Web app -> Anyone -> Copy /exec URL
+const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyOc6g9kR17zMJYK1AR0yDdRhLurrv-tPItUGUDvR2AGOa3e1_BTJ6JnGxzu16awUlqdA/exec'; // <-- REPLACE THIS LINE ONLY
+
 function getParams(){ const s=window.location.search; const p=new URLSearchParams(s); return { src:p.get('src')||'orangr-github', pack:p.get('pack')||'L5-monthly-18d-popular' }; }
 function showToast(msg){ const t=document.getElementById('orangr-toast'); t.textContent=msg; t.style.display='block'; setTimeout(()=>{ t.style.display='none'; },4000); }
+
 document.addEventListener('DOMContentLoaded', ()=>{
   const { pack } = getParams();
   const ps=document.getElementById('pack'); if(ps) ps.value=pack;
@@ -118,13 +123,17 @@ document.addEventListener('DOMContentLoaded', ()=>{
     complianceSlider.addEventListener('input', (e)=>{ updateComplianceLabel(e.target.value); });
     updateComplianceLabel(complianceSlider.value);
   }
+  
   const form=document.getElementById('contactForm');
   const submitBtn=form.querySelector('button[type="submit"]');
+  
   form.addEventListener('submit',async (e)=>{
     e.preventDefault();
-    const originalText=submitBtn.textContent;
-    submitBtn.textContent='Saving...';
-    submitBtn.disabled=true;
+    if(!GOOGLE_SHEET_URL || GOOGLE_SHEET_URL.indexOf('YOUR_DEPLOYMENT_ID')!==-1){
+      alert('Developer error: GOOGLE_SHEET_URL not set. Please paste your Web App /exec URL in the HTML file line 73');
+      return;
+    }
+    submitBtn.textContent='Saving...'; submitBtn.disabled=true;
     const data={
       email:document.getElementById('email').value,
       company:document.getElementById('company').value,
@@ -139,44 +148,37 @@ document.addEventListener('DOMContentLoaded', ()=>{
       src:getParams().src,
       timestamp:new Date().toISOString()
     };
-    // 1. Save locally (backup)
-    try {
+    try{
       const ex=JSON.parse(localStorage.getItem('orangr_contacts_github')||'[]'); ex.push(data); localStorage.setItem('orangr_contacts_github', JSON.stringify(ex));
-    } catch(err){}
-    showToast('✓ Saving to Google Sheet...');
-    // 2. Auto-save to Google Sheet (no user participation)
-    let sheetSuccess=false;
-    if(GOOGLE_SHEET_URL && GOOGLE_SHEET_URL.indexOf('YOUR_DEPLOYMENT_ID')===-1){
-      try {
-        const resp=await fetch(GOOGLE_SHEET_URL, {
-          method:'POST',
-          mode:'no-cors',
-          headers:{'Content-Type':'application/json'},
-          body:JSON.stringify(data)
-        });
-        // no-cors means we can't read response, but it still saves
-        sheetSuccess=true;
-        showToast('✓ Saved to Google Sheet — Email sent to sm_goh@steenbok.biz');
-      } catch(fetchErr){
-        console.error('Sheet save failed', fetchErr);
-        // Fallback to form-encoded
-        try {
-          const formData=new FormData();
-          formData.append('data', JSON.stringify(data));
-          await fetch(GOOGLE_SHEET_URL, {method:'POST', mode:'no-cors', body: formData});
-          sheetSuccess=true;
-        } catch(err2){
-          showToast('⚠ Local save only — Check Sheet URL');
-        }
-      }
-    } else {
-      showToast('⚠ Set GOOGLE_SHEET_URL first — Saved locally only');
-    }
-    // 3. Also try Formspree backup (optional) - you can add second URL here
-    // 4. Redirect to GitHub repo after 1s (no email popup)
-    setTimeout(()=>{
-      window.location.href='https://github.com/samgoh0/orangr9';
-    }, sheetSuccess ? 1200 : 2000);
+    }catch(err){}
+    showToast('Saving...');
+
+    // Triple method to ensure delivery (no-cors hides errors, so use all 3)
+    try{ navigator.sendBeacon(GOOGLE_SHEET_URL, new Blob([JSON.stringify(data)], {type:'text/plain'})); }catch(err){}
+    try{
+      await fetch(GOOGLE_SHEET_URL, {
+        method:'POST',
+        mode:'no-cors',
+        headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify(data)
+      });
+    }catch(err){}
+    try{
+      const iframeForm=document.createElement('form');
+      iframeForm.method='POST';
+      iframeForm.action=GOOGLE_SHEET_URL;
+      iframeForm.target='hiddenIframe';
+      iframeForm.style.display='none';
+      const input=document.createElement('input');
+      input.type='hidden'; input.name='data'; input.value=JSON.stringify(data);
+      iframeForm.appendChild(input);
+      document.body.appendChild(iframeForm);
+      iframeForm.submit();
+      setTimeout(()=>{ if(iframeForm.parentNode) iframeForm.parentNode.removeChild(iframeForm); }, 1000);
+    }catch(err){}
+    
+    showToast('✓ Sent - Redirecting...');
+    setTimeout(()=>{ window.location.href='https://github.com/samgoh0/orangr9'; }, 1500);
   });
 });
 </script>
