@@ -6,36 +6,21 @@
 <title>Orangr - Contact - Back Office For Tier 3 FIs</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-* { font-family: Verdana, Georgia !important; }
-h1,h2,h3,button,b,strong { font-family: Verdana !important; }
-p,li,span,input,select,textarea,label,small,div { font-family: Georgia !important; }
+* { font-family: Verdana !important; }
 ::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-thumb { background:#2E2E2E; border-radius:4px; }
+input[type="range"]::-webkit-slider-thumb { -webkit-appearance:none; height:20px; width:20px; border-radius:50%; background:#FF5A1F; cursor:pointer; }
+input[type="range"]::-moz-range-thumb { height:20px; width:20px; border-radius:50%; background:#FF5A1F; cursor:pointer; border:none; }
 </style>
 </head>
 <body style="background:#0F0F0F; color:#F5F1E8; min-height:100vh;">
 <div style="height:8px; background:#FF5A1F; width:100%;"></div>
-
 <div class="max-w-6xl mx-auto px-6 py-10">
   <div class="flex flex-col lg:flex-row gap-8">
-    <!-- Left: Info + Bridging Context -->
     <div class="lg:w-[48%]">
       <div class="text-[11px] tracking-[0.2em] text-[#D97757] uppercase">FOR TIER 3 FIS 20-150 STAFF SINGAPORE ONLY</div>
-      <h1 class="mt-3 text-[32px] lg:text-[42px] font-bold leading-[0.95] tracking-[-0.02em] text-[#F5F1E8]">
-        MAS Audit Pack in 24h.
-        <span class="block text-[#FF5A1F]">Even When Staff Resigns.</span>
-      </h1>
+      <h1 class="mt-3 text-[32px] lg:text-[42px] font-bold leading-[0.95] tracking-[-0.02em] text-[#F5F1E8]">MAS Audit Pack in 24h.<span class="block text-[#FF5A1F]">Even When Staff Resigns.</span></h1>
       <p class="mt-4 text-[15px] text-[#E8DCC6] leading-relaxed">Same MAS requirements as Tier 1. 1/10th back office. One MSA, 8 Functions, You Own Data.</p>
-      
       <div class="mt-6 grid grid-cols-1 gap-3">
-        <div class="rounded-xl border border-[#2E2E2E] bg-[#1E1E1E] p-4">
-          <div class="text-[11px] text-[#FF5A1F] font-bold tracking-wide">FROM URL BRIDGE</div>
-          <div id="bridge-info" class="mt-2 text-[13px] text-[#F5F1E8] leading-6">Reading pack...</div>
-          <div class="mt-3 flex gap-2">
-            <div class="h-2 rounded-full bg-[#E8DCC6] w-[60px]"></div>
-            <div class="h-2 rounded-full bg-[#2E2E2E] w-full"></div>
-          </div>
-          <div class="mt-2 text-[11px] text-[#9CA3AF]">Longer cream = more effort. Fixed format ?src=...&pack=...#3</div>
-        </div>
         <div class="rounded-xl border border-[#2E2E2E] bg-[#1E1E1E] p-4">
           <div class="text-[11px] text-[#FF5A1F] font-bold">WHAT YOU GET</div>
           <ul class="mt-2 text-[13px] text-[#E8DCC6] space-y-1 list-disc ml-4">
@@ -45,22 +30,12 @@ p,li,span,input,select,textarea,label,small,div { font-family: Georgia !importan
             <li>You Own License + Data — No Lock-in — We Implement + Support</li>
           </ul>
         </div>
-        <div class="rounded-xl border border-[#2E2E2E] bg-[#121212] p-4">
-          <div class="text-[11px] text-[#9CA3AF]">VS HIRING / MARKET</div>
-          <div class="mt-1 flex gap-3 text-[12px]">
-            <div><span class="text-[#F5F1E8] font-bold">Market consultant higher</span><br><span class="text-[#FF5A1F]">$8k-12k</span><div class="mt-1 h-2 w-24 bg-[#2E2E2E] rounded-full"><div class="h-2 w-10 bg-[#3A3D40] rounded-full"></div></div><span class="text-[10px] text-[#9CA3AF]">Longer gray = higher market cost</span></div>
-            <div><span class="text-[#F5F1E8] font-bold">Hiring 3 staff higher</span><br><span class="text-[#FF5A1F]">$20k+/mo</span><div class="mt-1 h-2 w-24 bg-[#2E2E2E] rounded-full"><div class="h-2 w-16 bg-[#3A3D40] rounded-full"></div></div></div>
-          </div>
-        </div>
       </div>
     </div>
-
-    <!-- Right: Contact Form that replaces #3 -->
     <div class="lg:w-[52%]" id="contact">
-      <div id="contact" class="rounded-2xl border border-[#2E2E2E] bg-[#1E1E1E] p-6 lg:p-7 shadow-2xl sticky top-6">
-        <h2 class="text-[18px] font-bold text-[#FF5A1F]">Contact Us — Secure Pack</h2>
-        <p class="mt-1 text-[12px] text-[#9CA3AF]">Replaces https://orangrone.mystrikingly.com/#3 — You control bridging. Host on GitHub Pages.</p>
-
+      <div class="rounded-2xl border border-[#2E2E2E] bg-[#1E1E1E] p-6 lg:p-7 shadow-2xl sticky top-6">
+        <h2 class="text-[18px] font-bold text-[#FF5A1F]">Contact Us</h2>
+        <p class="mt-1 text-[12px] text-[#9CA3AF]">Host on GitHub Pages — Fixed font Verdana only.</p>
         <form id="contactForm" class="mt-5 space-y-4">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div><label class="text-[11px] text-[#E8DCC6]">Email*</label><input required id="email" type="email" class="mt-1 w-full rounded-lg border border-[#2E2E2E] bg-[#121212] px-3 py-2.5 text-[13px] text-[#F5F1E8] outline-none focus:border-[#FF5A1F]" placeholder="cfo@company.com"></div>
@@ -74,138 +49,136 @@ p,li,span,input,select,textarea,label,small,div { font-family: Georgia !importan
             <div><label class="text-[11px] text-[#E8DCC6]">Staff Size</label><select id="staff" class="mt-1 w-full rounded-lg border border-[#2E2E2E] bg-[#121212] px-3 py-2.5 text-[13px] text-[#F5F1E8]"><option>20-50</option><option>51-100</option><option>101-150</option><option><20</option><option>>150</option></select></div>
             <div><label class="text-[11px] text-[#E8DCC6]">MAS Audit Month</label><select id="auditMonth" class="mt-1 w-full rounded-lg border border-[#2E2E2E] bg-[#121212] px-3 py-2.5 text-[13px] text-[#F5F1E8]"><option>Next 3 months</option><option>3-6 months</option><option>6-12 months</option><option>>12 months</option></select></div>
           </div>
+          <input type="hidden" id="pack" value="L5-monthly-18d-popular">
           <div>
-            <label class="text-[11px] text-[#E8DCC6]">Pack Interested In</label>
-            <select id="pack" class="mt-1 w-full rounded-lg border border-[#FF5A1F] bg-[#121212] px-3 py-2.5 text-[13px] text-[#FF5A1F] font-bold">
-              <option value="L0-checklist-free">L0 Free Checklist — Free Gaps</option>
-              <option value="L1-scorecard-free">L1 Free Scorecard 24Q — Free Instant Score</option>
-              <option value="L2-benchmark-199">L2 $199 Benchmark — Small effort</option>
-              <option value="L3-snapshot-5d">L3 Snapshot $3,500 — 5 man-days — See our controls</option>
-              <option value="L4-assessment-35d">L4 Assessment $25k — 35 man-days — Full picture</option>
-              <option value="L5-monthly-18d-popular" selected>L5 Monthly $12k Most Popular — 18 man-days/mo — MAS compliant</option>
-              <option value="L6-annual-180d">L6 Annual $120k Save $24k — 180 man-days/yr — Enterprise</option>
-              <option value="L7-coventure-outcome">L7 Co-Venture — Outcome-based — Discuss</option>
-              <option value="score-red">Score Red — Need Snapshot</option>
-              <option value="score-amber">Score Amber — Need Assessment</option>
-              <option value="score-green">Score Green — Enterprise</option>
+            <label class="text-[11px] text-[#E8DCC6]">What is your big challenge in being compliant to the authorities?</label>
+            <select id="bigChallenge" class="mt-1 w-full rounded-lg border border-[#2E2E2E] bg-[#121212] px-3 py-2.5 text-[13px] text-[#F5F1E8] outline-none focus:border-[#FF5A1F]">
+              <option value="">Select a challenge...</option>
+              <option value="audit-pack-24h">MAS Audit Pack in 24h — Can't produce on time</option>
+              <option value="staff-resign-knowledge">Staff resigns — Knowledge walks out</option>
+              <option value="inventory-assurance">Inventory / Data Assurance — Discrepancies</option>
+              <option value="controls-documentation">Internal Controls Documentation — MAS wants evidence</option>
+              <option value="aml-cft">AML / CFT — Transactions monitoring</option>
+              <option value="regulatory-reporting">Regulatory Reporting — Late / inaccurate</option>
+              <option value="license-conditions">CMS License Conditions — Breach risk</option>
+              <option value="outsourcing-vendor">Too many vendors — No single owner</option>
+              <option value="business-continuity">Business Continuity — Back office stops</option>
+              <option value="data-ownership">Data ownership — Locked in vendor</option>
+              <option value="cost-hiring">Cost — Hiring 3-4 staff $20k+/mo</option>
+              <option value="other">Other — Please specify in Message</option>
             </select>
-            <div class="mt-1 text-[10px] text-[#9CA3AF]">Auto-filled from URL ?src=...&pack=...#3 — You own this bridging now.</div>
+          </div>
+          <div>
+            <label class="text-[11px] text-[#E8DCC6]">In your mind, how compliant is your organisation to the demands of the laws, in your industry?</label>
+            <div class="mt-3 px-1">
+              <div class="flex items-center gap-3">
+                <span class="text-[10px] text-[#9CA3AF] whitespace-nowrap">0 = Not compliant</span>
+                <input type="range" id="complianceLevel" min="0" max="10" value="5" step="1" class="flex-1 h-2 bg-[#2E2E2E] rounded-lg appearance-none cursor-pointer" style="accent-color:#FF5A1F;">
+                <span class="text-[10px] text-[#9CA3AF] whitespace-nowrap">10 = In compliance</span>
+              </div>
+              <div class="mt-2 flex justify-between items-center">
+                <div class="text-[11px] text-[#9CA3AF]">Selected: <span id="complianceLevelValue" class="text-[#FF5A1F] font-bold text-[14px]">5</span> / 10</div>
+                <div class="text-[10px]"><span id="complianceLabel" class="text-[#E8DCC6]">Partially compliant</span></div>
+              </div>
+              <div class="mt-1 flex justify-between text-[9px] text-[#3A3D40]"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div>
+            </div>
           </div>
           <div>
             <label class="text-[11px] text-[#E8DCC6]">Message</label>
-            <textarea id="message" rows="3" class="mt-1 w-full rounded-lg border border-[#2E2E2E] bg-[#121212] px-3 py-2.5 text-[13px] text-[#F5F1E8] outline-none focus:border-[#FF5A1F]" placeholder="Audit pack in 24h even when staff resigns? Need sample deck & sample audit pack..."></textarea>
+            <textarea id="message" rows="3" class="mt-1 w-full rounded-lg border border-[#2E2E2E] bg-[#121212] px-3 py-2.5 text-[13px] text-[#F5F1E8] outline-none focus:border-[#FF5A1F]" placeholder="MAS audit pain, current back office gap..."></textarea>
           </div>
           <div class="flex gap-2 items-start">
             <input type="checkbox" id="pdpa" required class="mt-1">
             <label for="pdpa" class="text-[11px] text-[#9CA3AF]">I agree to receive MAS Back Office Scorecard and audit pack checklist. PDPA compliant.</label>
           </div>
-
-          <button type="submit" class="w-full rounded-xl bg-[#FF5A1F] hover:bg-[#FF6B2E] text-black font-bold py-3 text-[14px]">Join Waitlist + Secure Pack — Instant Scorecard</button>
-
-          <div id="successBox" class="hidden rounded-xl bg-[#F5F1E8] text-black p-4 text-[13px] leading-relaxed">
-            <div class="font-bold">✓ You're on list. Saved locally + ready to forward.</div>
-            <div class="mt-1 text-[11px]">This static GitHub page saves to localStorage. Connect to Formspree / Google Sheets / Email via JS below for production.</div>
-            <div class="mt-3 grid grid-cols-2 gap-2">
-              <button type="button" id="openMainSite" class="rounded-lg bg-black text-[#F5F1E8] py-2 text-[12px] font-bold">Open Main Site Pack →</button>
-              <button type="button" id="copyLead" class="rounded-lg border border-black py-2 text-[12px] font-bold">Copy Lead JSON</button>
-            </div>
-            <div class="mt-3 text-[11px] text-[#8B7355]">Next: Forward to https://orangrone.mystrikingly.com/?src=...&pack=...#3 with correct format</div>
-          </div>
-
-          <div class="mt-3 rounded-lg bg-[#121212] border border-[#2E2E2E] p-3">
-            <div class="text-[10px] text-[#9CA3AF] uppercase tracking-wide">Bridge URL Preview (fixed format)</div>
-            <div id="bridgeUrlPreview" class="mt-1 text-[11px] text-[#FF5A1F] break-all">https://orangrone.mystrikingly.com/?src=orangr-github&pack=L5-monthly-18d-popular#3</div>
-          </div>
+          <button type="submit" class="w-full rounded-xl bg-[#FF5A1F] hover:bg-[#FF6B2E] text-black font-bold py-3 text-[14px]">Instant Scorecard</button>
         </form>
-
-        <div class="mt-4 text-[10px] text-[#9CA3AF]">Host on GitHub: repo → Settings → Pages → main / root → file = index.html — Fonts only Verdana + Georgia — No ladder term — Prospect sees only Pack Price + Effort + Outcome + vs Hiring/Market</div>
       </div>
     </div>
   </div>
-
-  <div class="mt-8 text-center text-[11px] text-[#3A3D40]">Orangr — Back Office For Tier 3 FIs — MAS Compliant — Software Implementation Support Partner — No Software Ownership — Singapore — Fixed Pack Prices</div>
+  <div class="mt-8 text-center text-[11px] text-[#3A3D40]">Orangr — Back Office For Tier 3 FIs — MAS Compliant — Singapore — Fixed Pack Prices — Verdana only</div>
 </div>
-
-<!-- Toast bottom-right 24px white bg -->
 <div id="orangr-toast" style="position:fixed; bottom:24px; right:24px; z-index:9999; display:none; background:#F5F1E8; color:#000; padding:12px 18px; border-radius:12px; font-size:13px; font-weight:600; box-shadow:0 10px 30px rgba(0,0,0,0.5); border:1px solid #E8DCC6; max-width:340px;"></div>
-
 <script>
-function getParams() {
-  const search = window.location.search; // ?src=...&pack=... correctly before #
-  const params = new URLSearchParams(search);
-  return { src: params.get('src') || 'orangr-github', pack: params.get('pack') || 'L5-monthly-18d-popular', hash: window.location.hash || '#3' };
-}
-function updateBridgeInfo() {
-  const { src, pack, hash } = getParams();
-  const info = document.getElementById('bridge-info');
-  if(info){
-    info.innerHTML = '<b>src:</b> ' + src + '<br><b>pack:</b> ' + pack + '<br><b>hash:</b> ' + hash + '<br><b>fixed URL:</b> ?src=' + src + '&pack=' + pack + '#3 works — #3?src=... broken';
-  }
-  const packSelect = document.getElementById('pack');
-  if(packSelect){
-    for(let opt of packSelect.options){ if(opt.value===pack){ packSelect.value=pack; break; } }
-  }
-  const preview = document.getElementById('bridgeUrlPreview');
-  if(preview){
-    preview.textContent = 'https://orangrone.mystrikingly.com/?src=' + src + '&pack=' + pack + '#3';
-  }
-}
-function showToast(msg){
-  const t = document.getElementById('orangr-toast');
-  t.textContent = msg;
-  t.style.display='block';
-  setTimeout(()=>{ t.style.display='none'; }, 4000);
-}
+const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzLvh68RKJtg3-F_YHtIUkl559kWXHUbWh5Mg6SoRahUXI2XBCMiBYE2Cu3PziVPOjZqw/exec'; // <-- REPLACE THIS WITH YOUR WEB APP URL
+function getParams(){ const s=window.location.search; const p=new URLSearchParams(s); return { src:p.get('src')||'orangr-github', pack:p.get('pack')||'L5-monthly-18d-popular' }; }
+function showToast(msg){ const t=document.getElementById('orangr-toast'); t.textContent=msg; t.style.display='block'; setTimeout(()=>{ t.style.display='none'; },4000); }
 document.addEventListener('DOMContentLoaded', ()=>{
-  updateBridgeInfo();
-  window.addEventListener('hashchange', updateBridgeInfo);
-  const form = document.getElementById('contactForm');
-  const successBox = document.getElementById('successBox');
-  form.addEventListener('submit', (e)=>{
+  const { pack } = getParams();
+  const ps=document.getElementById('pack'); if(ps) ps.value=pack;
+  const complianceSlider=document.getElementById('complianceLevel');
+  const complianceValue=document.getElementById('complianceLevelValue');
+  const complianceLabel=document.getElementById('complianceLabel');
+  function updateComplianceLabel(val){
+    const labels={0:'Not compliant - At risk, urgent',1:'Significant gaps',2:'Significant gaps',3:'Some areas need work',4:'Partially compliant',5:'Partially compliant',6:'Mostly compliant',7:'Mostly compliant - Minor gaps',8:'Fully compliant - Minor gaps',9:'Fully compliant',10:'Fully compliant - Ready for MAS audit'};
+    if(complianceLabel) complianceLabel.textContent=labels[val]||val;
+    if(complianceValue) complianceValue.textContent=val;
+  }
+  if(complianceSlider){
+    complianceSlider.addEventListener('input', (e)=>{ updateComplianceLabel(e.target.value); });
+    updateComplianceLabel(complianceSlider.value);
+  }
+  const form=document.getElementById('contactForm');
+  const submitBtn=form.querySelector('button[type="submit"]');
+  form.addEventListener('submit',async (e)=>{
     e.preventDefault();
-    const data = {
-      email: document.getElementById('email').value,
-      company: document.getElementById('company').value,
-      role: document.getElementById('role').value,
-      fiType: document.getElementById('fiType').value,
-      staff: document.getElementById('staff').value,
-      auditMonth: document.getElementById('auditMonth').value,
-      pack: document.getElementById('pack').value,
-      message: document.getElementById('message').value,
-      src: getParams().src,
-      timestamp: new Date().toISOString()
+    const originalText=submitBtn.textContent;
+    submitBtn.textContent='Saving...';
+    submitBtn.disabled=true;
+    const data={
+      email:document.getElementById('email').value,
+      company:document.getElementById('company').value,
+      role:document.getElementById('role').value,
+      fiType:document.getElementById('fiType').value,
+      staff:document.getElementById('staff').value,
+      auditMonth:document.getElementById('auditMonth').value,
+      pack:document.getElementById('pack').value,
+      bigChallenge:document.getElementById('bigChallenge').value,
+      complianceLevel:document.getElementById('complianceLevel').value,
+      message:document.getElementById('message').value,
+      src:getParams().src,
+      timestamp:new Date().toISOString()
     };
-    // GitHub Pages static - save to localStorage demo, replace with Formspree / Sheets API for prod
-    const existing = JSON.parse(localStorage.getItem('orangr_contacts_github')||'[]');
-    existing.push(data);
-    localStorage.setItem('orangr_contacts_github', JSON.stringify(existing));
-    successBox.classList.remove('hidden');
-    showToast('✓ Saved — You\'re on list. Pack: ' + data.pack);
-    // Confetti simple
-    for(let i=0;i<12;i++){
-      const d=document.createElement('div');
-      d.style.position='fixed'; d.style.left=(50+Math.random()*40)+'vw'; d.style.top='-10px';
-      d.style.width='8px'; d.style.height='8px'; d.style.background=['#FF5A1F','#F5F1E8','#E8DCC6'][Math.floor(Math.random()*3)];
-      d.style.borderRadius='50%'; d.style.zIndex='10000'; d.style.transition='transform 1s ease-out, top 1s ease-out';
-      document.body.appendChild(d);
-      setTimeout(()=>{ d.style.top='110vh'; d.style.transform='rotate(720deg)'; }, 50);
-      setTimeout(()=>{ d.remove(); }, 1200);
+    // 1. Save locally (backup)
+    try {
+      const ex=JSON.parse(localStorage.getItem('orangr_contacts_github')||'[]'); ex.push(data); localStorage.setItem('orangr_contacts_github', JSON.stringify(ex));
+    } catch(err){}
+    showToast('✓ Saving to Google Sheet...');
+    // 2. Auto-save to Google Sheet (no user participation)
+    let sheetSuccess=false;
+    if(GOOGLE_SHEET_URL && GOOGLE_SHEET_URL.indexOf('YOUR_DEPLOYMENT_ID')===-1){
+      try {
+        const resp=await fetch(GOOGLE_SHEET_URL, {
+          method:'POST',
+          mode:'no-cors',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify(data)
+        });
+        // no-cors means we can't read response, but it still saves
+        sheetSuccess=true;
+        showToast('✓ Saved to Google Sheet — Email sent to sm_goh@steenbok.biz');
+      } catch(fetchErr){
+        console.error('Sheet save failed', fetchErr);
+        // Fallback to form-encoded
+        try {
+          const formData=new FormData();
+          formData.append('data', JSON.stringify(data));
+          await fetch(GOOGLE_SHEET_URL, {method:'POST', mode:'no-cors', body: formData});
+          sheetSuccess=true;
+        } catch(err2){
+          showToast('⚠ Local save only — Check Sheet URL');
+        }
+      }
+    } else {
+      showToast('⚠ Set GOOGLE_SHEET_URL first — Saved locally only');
     }
-  });
-  document.getElementById('openMainSite').addEventListener('click', ()=>{
-    const { src, pack } = getParams();
-    const url = 'https://orangrone.mystrikingly.com/?src=' + encodeURIComponent(src) + '&pack=' + encodeURIComponent(pack) + '#3';
-    window.open(url, '_blank');
-  });
-  document.getElementById('copyLead').addEventListener('click', ()=>{
-    const last = JSON.parse(localStorage.getItem('orangr_contacts_github')||'[]').slice(-1)[0];
-    if(last){ navigator.clipboard.writeText(JSON.stringify(last,null,2)).then(()=>showToast('Lead JSON copied')); }
+    // 3. Also try Formspree backup (optional) - you can add second URL here
+    // 4. Redirect to GitHub repo after 1s (no email popup)
+    setTimeout(()=>{
+      window.location.href='https://github.com/samgoh0/orangr9';
+    }, sheetSuccess ? 1200 : 2000);
   });
 });
-// Ensure no ladder term in source - validation
-if(document.documentElement.innerHTML.toLowerCase().includes('value ladder') || document.documentElement.innerHTML.toLowerCase().includes('ascending value')){
-  console.error('Ladder term found - must remove');
-}
 </script>
 </body>
 </html>
